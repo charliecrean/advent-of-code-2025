@@ -4,8 +4,8 @@ import dev.crean.utils.FileHandler;
 
 public class FindPassword {
 
-    private static final String DAY_ONE_INPUT = "day-one-input.txt";
-    private static final String DAY_ONE_SAMPLE = "day-one-sample.txt";
+    private static final String DAY_ONE_INPUT = "aocResources/day-one-input.txt";
+    private static final String DAY_ONE_SAMPLE = "aocResources/day-one-sample.txt";
 
     static void main() {
         runSample();

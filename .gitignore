@@ -37,3 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Advent of Code
+/src/main/resources/aocResources/

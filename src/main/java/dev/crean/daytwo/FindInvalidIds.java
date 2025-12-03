@@ -6,8 +6,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class FindInvalidIds {
 
-    private static final String DAY_TWO_INPUT = "day-two-input.txt";
-    private static final String DAY_TWO_SAMPLE = "day-two-sample.txt";
+    private static final String DAY_TWO_INPUT = "aocResources/day-two-input.txt";
+    private static final String DAY_TWO_SAMPLE = "aocResources/day-two-sample.txt";
 
     static void main() {
         runSample();
