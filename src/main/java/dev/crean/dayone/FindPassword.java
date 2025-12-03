@@ -1,5 +1,7 @@
 package dev.crean.dayone;
 
+import dev.crean.utils.FileHandler;
+
 public class FindPassword {
 
     private static final String DAY_ONE_INPUT = "day-one-input.txt";

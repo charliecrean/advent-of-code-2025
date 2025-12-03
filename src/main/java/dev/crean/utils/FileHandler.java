@@ -1,4 +1,6 @@
-package dev.crean.dayone;
+package dev.crean.utils;
+
+import dev.crean.dayone.FindPassword;
 
 import java.io.IOException;
 import java.net.URI;
