@@ -18,8 +18,8 @@ class AllMatchMoveableCounter extends MoveableCounter {
 
     private int scanForMatches(int[][] localTotals) {
         int moveable = 0;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (int i = 0; i < originalGrid.size(); i++) {
+            for (int j = 0; j < originalGrid.getFirst().size(); j++) {
                 if (originalGrid.get(i).get(j) == '@' && localTotals[i][j] < 4) {
                     moveable++;
                     adjust(i, j, this::decrement);

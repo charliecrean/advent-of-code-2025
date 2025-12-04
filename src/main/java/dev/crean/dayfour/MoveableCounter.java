@@ -5,18 +5,13 @@ import java.util.function.BiConsumer;
 
 abstract class MoveableCounter implements MoveableRollCounter {
     int[][] totals;
-    int rows;
-    int cols;
     List<List<Character>> originalGrid;
-
     boolean isInitialised = false;
 
     @Override
     public void init(List<List<Character>> originalGrid) {
         this.originalGrid = originalGrid;
-        this.rows = originalGrid.size();
-        this.cols = originalGrid.getFirst().size();
-        this.totals = new int[rows][cols];
+        this.totals = new int[originalGrid.size()][originalGrid.getFirst().size()];
         this.isInitialised = true;
     }
 
@@ -31,36 +26,28 @@ abstract class MoveableCounter implements MoveableRollCounter {
         }
         for (int i = row - 1; i <= row + 1; i++) {
             for (int j = col - 1; j <= col + 1; j++) {
-                if (i != row || j != col) {
+                if ((i != row || j != col) && canAdjust(i, j)) {
                     action.accept(i, j);
                 }
             }
         }
     }
 
+    private boolean canAdjust(int row, int col) {
+        if (row < 0 || row >= originalGrid.size()) {
+            return false;
+        }
+        if (col < 0 || col >= originalGrid.getFirst().size()) {
+            return false;
+        }
+        return originalGrid.get(row).get(col) == '@';
+    }
+
     private void increment(int row, int col) {
-        if (row < 0 || row >= rows) {
-            return;
-        }
-        if (col < 0 || col >= cols) {
-            return;
-        }
-        if (originalGrid.get(row).get(col) != '@') {
-            return;
-        }
         totals[row][col] += 1;
     }
 
     protected void decrement(int row, int col) {
-        if (row < 0 || row >= rows) {
-            return;
-        }
-        if (col < 0 || col >= cols) {
-            return;
-        }
-        if (originalGrid.get(row).get(col) != '@') {
-            return;
-        }
         totals[row][col] -= 1;
     }
 }
