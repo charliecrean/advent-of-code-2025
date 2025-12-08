@@ -32,7 +32,8 @@ class InventoryDatabase {
             } else if (processingIds.get()) {
                 return new Id(Long.parseLong(line));
             } else {
-                return new IdRange(Long.parseLong(line.split("-")[0]), Long.parseLong(line.split("-")[1]));
+                String[] parts = line.trim().split("-");
+                return new IdRange(Long.parseLong(parts[0]), Long.parseLong(parts[1]));
             }
         }, (inventoryObj) -> {
             if (inventoryObj instanceof Id) {
@@ -43,8 +44,8 @@ class InventoryDatabase {
         });
     }
 
-    public int getFreshProductCount() {
-        return (int) ids.stream().filter(idRanges::isPresent).count();
+    public long getFreshProductCount() {
+        return ids.stream().filter(idRanges::isPresent).count();
     }
 
     public long getTotalAvailableFreshIds() {

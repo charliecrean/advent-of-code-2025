@@ -7,8 +7,8 @@ class IdRanges {
     private final List<IdRange> storedRanges = new ArrayList<>();
 
     public void add(IdRange inputRange) {
-        long start = inputRange.low;
-        long end = inputRange.high;
+        long start = inputRange.getLow();
+        long end = inputRange.getHigh();
 
         if (storedRanges.isEmpty()) {
             storedRanges.add(inputRange);
@@ -21,15 +21,15 @@ class IdRanges {
 
         // Identify stored ranges overlapping with the new range
         for (IdRange storedRange : storedRanges) {
-            if (start >= storedRange.low && start <= storedRange.high) {
+            if (start >= storedRange.getLow() && start <= storedRange.getHigh()) {
                 startCoveringRange = storedRange;
             }
 
-            if (end >= storedRange.low && end <= storedRange.high) {
+            if (end >= storedRange.getLow() && end <= storedRange.getHigh()) {
                 endCoveringRange = storedRange;
             }
 
-            if (storedRange.low > inputRange.low && storedRange.high < inputRange.high) {
+            if (storedRange.getLow() > inputRange.getLow() && storedRange.getHigh() < inputRange.getHigh()) {
                 coveredRanges.add(storedRange);
             }
         }
@@ -42,22 +42,22 @@ class IdRanges {
             storedRanges.add(inputRange);
         } else if (startCoveringRange == null) {
             // extend range where the end of the new range falls
-            endCoveringRange.low = inputRange.low;
+            endCoveringRange.setLow(inputRange.getLow());
         } else if (endCoveringRange == null) {
             // extend range where the start of the new range falls
-            startCoveringRange.high = inputRange.high;
+            startCoveringRange.setHigh(inputRange.getHigh());
         } else if(startCoveringRange != endCoveringRange) {
             // Merge ranges linked by the new range
             storedRanges.remove(endCoveringRange);
-            startCoveringRange.high = endCoveringRange.high;
+            startCoveringRange.setHigh(endCoveringRange.getHigh());
         }
     }
 
     public boolean isPresent(Id id) {
-        return storedRanges.stream().anyMatch(idRange -> id.value >= idRange.low && id.value <= idRange.high);
+        return storedRanges.stream().anyMatch(range -> range.isInRange(id));
     }
 
     public long getAvailableIdCount() {
-        return storedRanges.stream().mapToLong(range -> (range.high - range.low) + 1).sum();
+        return storedRanges.stream().mapToLong(range -> (range.getHigh() - range.getLow()) + 1).sum();
     }
 }

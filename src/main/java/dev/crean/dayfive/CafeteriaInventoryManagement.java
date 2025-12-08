@@ -8,7 +8,7 @@ public class CafeteriaInventoryManagement {
     private static final String SAMPLE = "aocResources/day-five-sample.txt";
     private static final String INPUT = "aocResources/day-five-input.txt";
 
-    static void main() {
+    static void main(String[] args) {
         runSample();
         runMain();
     }
@@ -21,7 +21,7 @@ public class CafeteriaInventoryManagement {
 
     private static void runSamplePartOne(InventoryDatabase sampleDatabase) {
         long expected = 3L;
-        int result = sampleDatabase.getFreshProductCount();
+        long result = sampleDatabase.getFreshProductCount();
         log.info("Number of IDs which are fresh in the sample set: " + result);
         if (result != expected) {
             throw new RuntimeException(String.format("Expected %s to be the result for the sample.", expected));
@@ -31,8 +31,8 @@ public class CafeteriaInventoryManagement {
     private static void runSamplePartTwo(InventoryDatabase sampleDatabase) {
         long expected = 14L;
         long result = sampleDatabase.getTotalAvailableFreshIds();
-        log.info(String.format("Number of available IDs in the sample set: %s", expected));
-        if (result != 14) {
+        log.info(String.format("Number of available IDs in the sample set: %s", result));
+        if (result != expected) {
             throw new RuntimeException(String.format("Expected %s to be the result for the sample.", expected));
         }
     }
