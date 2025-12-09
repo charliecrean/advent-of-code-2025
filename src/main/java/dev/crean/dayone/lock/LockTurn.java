@@ -1,6 +1,6 @@
-package dev.crean.dayone;
+package dev.crean.dayone.lock;
 
-class LockTurn {
+public class LockTurn {
     int direction;
     int numberOfTurns;
     int fullRotations = 0;

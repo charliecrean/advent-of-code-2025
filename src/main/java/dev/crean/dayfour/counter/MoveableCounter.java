@@ -1,4 +1,4 @@
-package dev.crean.dayfour;
+package dev.crean.dayfour.counter;
 
 import java.util.List;
 import java.util.function.BiConsumer;

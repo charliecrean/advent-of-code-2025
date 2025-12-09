@@ -1,7 +1,7 @@
-package dev.crean.daythree;
+package dev.crean.daythree.power;
 
 import java.util.List;
 
-interface JoltageCalculator {
+public interface JoltageCalculator {
     long calculate(List<BatteryBank> banks);
 }

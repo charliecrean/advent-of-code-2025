@@ -1,13 +1,8 @@
-package dev.crean.daytwo;
+package dev.crean.daytwo.id;
 
 class IdCannotHaveRepeatedSequenceTwice implements IdVerificationRule {
-    private static final IdVerificationRule INSTANCE = new IdCannotHaveRepeatedSequenceTwice();
 
-    private IdCannotHaveRepeatedSequenceTwice() {}
-
-    public static IdVerificationRule getInstance() {
-        return INSTANCE;
-    }
+    public IdCannotHaveRepeatedSequenceTwice() {}
 
     @Override
     public boolean isValid(long id) {

@@ -5,10 +5,8 @@ import dev.crean.utils.FileHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.logging.Logger;
 
 class InventoryDatabase {
-    private static final Logger log = Logger.getLogger(InventoryDatabase.class.getName());
 
     private final List<Id> ids;
     private final IdRanges idRanges;
@@ -24,7 +22,6 @@ class InventoryDatabase {
         FileHandler<InventoryDatabaseRecord> handler = new FileHandler<>(file);
         AtomicBoolean processingIds = new AtomicBoolean(false);
 
-        log.info("Building database from file: " + file);
         handler.processFileLines((String line) -> {
             if (line.trim().isEmpty()) {
                 processingIds.set(true);

@@ -39,4 +39,4 @@ build/
 .DS_Store
 
 ### Advent of Code
-/src/main/resources/aocResources/
+/src/test/resources/aocResources/

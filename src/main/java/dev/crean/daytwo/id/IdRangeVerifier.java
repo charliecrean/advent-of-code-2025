@@ -1,9 +1,9 @@
-package dev.crean.daytwo;
+package dev.crean.daytwo.id;
 
 import java.util.ArrayList;
 import java.util.List;
 
-record IdRangeVerifier(IdVerificationRule rule) {
+public record IdRangeVerifier(IdVerificationRule rule) {
 
     /**
      * Verify and return all invalid IDs within the range.

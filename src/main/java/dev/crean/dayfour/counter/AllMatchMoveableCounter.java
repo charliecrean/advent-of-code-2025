@@ -1,4 +1,4 @@
-package dev.crean.dayfour;
+package dev.crean.dayfour.counter;
 
 class AllMatchMoveableCounter extends MoveableCounter {
 
