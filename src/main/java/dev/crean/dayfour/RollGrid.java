@@ -1,5 +1,7 @@
 package dev.crean.dayfour;
 
+import dev.crean.dayfour.counter.MoveableRollCounter;
+
 import java.util.List;
 
 public class RollGrid {
