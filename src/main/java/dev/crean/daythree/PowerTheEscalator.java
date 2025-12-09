@@ -1,6 +1,8 @@
 package dev.crean.daythree;
 
 import dev.crean.utils.FileHandler;
+import dev.crean.utils.Input;
+import dev.crean.utils.SampleInput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +12,6 @@ import java.util.stream.Collectors;
 public class PowerTheEscalator {
 
     static Logger log = Logger.getLogger(PowerTheEscalator.class.getName());
-
-    private static final String DAY_THREE_SAMPLE = "aocResources/day-three-sample.txt";
-    private static final String DAY_THREE_INPUT = "aocResources/day-three-input.txt";
 
     static void main() {
         runSample();
@@ -26,12 +25,12 @@ public class PowerTheEscalator {
 
     private static void runMainPartOne() {
         JoltageCalculator twoDigitCalculator = new MaxJoltageCalculator(2);
-        log.info("Result: " + run(DAY_THREE_INPUT, twoDigitCalculator));
+        log.info("Result: " + run(Input.DAY_THREE, twoDigitCalculator));
     }
 
     private static void runMainPartTwo() {
         JoltageCalculator twelveDigitCalculator = new MaxJoltageCalculator(12);
-        log.info("Result: " + run(DAY_THREE_INPUT, twelveDigitCalculator));
+        log.info("Result: " + run(Input.DAY_THREE, twelveDigitCalculator));
     }
 
     private static void runSample() {
@@ -42,13 +41,13 @@ public class PowerTheEscalator {
     private static void runSamplePartOne() {
         log.info("Running sample part one.");
         JoltageCalculator twoDigitCalculator = new MaxJoltageCalculator(2);
-        checkResult(357, run(DAY_THREE_SAMPLE, twoDigitCalculator));
+        checkResult(357, run(SampleInput.DAY_THREE, twoDigitCalculator));
     }
 
     private static void runSamplePartTwo() {
         log.info("Running sample part two.");
         JoltageCalculator twelveDigitCalculator = new MaxJoltageCalculator(12);
-        checkResult(3121910778619L, run(DAY_THREE_SAMPLE, twelveDigitCalculator));
+        checkResult(3121910778619L, run(SampleInput.DAY_THREE, twelveDigitCalculator));
     }
 
     private static void checkResult(long expected, long actual) {

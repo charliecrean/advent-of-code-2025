@@ -1,6 +1,8 @@
 package dev.crean.dayfour;
 
 import dev.crean.utils.FileHandler;
+import dev.crean.utils.Input;
+import dev.crean.utils.SampleInput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +12,6 @@ import java.util.stream.Collectors;
 public class MoveTheRolls {
 
     static Logger log = Logger.getLogger(MoveTheRolls.class.getName());
-
-    private static final String SAMPLE = "aocResources/day-four-sample.txt";
-    private static final String INPUT = "aocResources/day-four-input.txt";
 
     static void main() {
         runSample();
@@ -27,13 +26,13 @@ public class MoveTheRolls {
     private static void runSamplePartOne() {
         log.info("Running sample part one.");
         MoveableRollCounter counter = new FirstMatchMoveableCounter();
-        checkResult(13, run(SAMPLE, counter));
+        checkResult(13, run(SampleInput.DAY_FOUR, counter));
     }
 
     private static void runSamplePartTwo() {
         log.info("Running sample part two.");
         MoveableRollCounter counter = new AllMatchMoveableCounter();
-        checkResult(43, run(SAMPLE, counter));
+        checkResult(43, run(SampleInput.DAY_FOUR, counter));
     }
 
     private static void runMain() {
@@ -43,12 +42,12 @@ public class MoveTheRolls {
 
     private static void runMainPartOne() {
         MoveableRollCounter counter = new FirstMatchMoveableCounter();
-        log.info("Result: " + run(INPUT, counter));
+        log.info("Result: " + run(Input.DAY_FOUR, counter));
     }
 
     private static void runMainPartTwo() {
         MoveableRollCounter counter = new AllMatchMoveableCounter();
-        log.info("Result: " + run(INPUT, counter));
+        log.info("Result: " + run(Input.DAY_FOUR, counter));
     }
 
     private static void checkResult(long expected, long actual) {

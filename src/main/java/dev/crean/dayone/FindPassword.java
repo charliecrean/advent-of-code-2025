@@ -1,11 +1,10 @@
 package dev.crean.dayone;
 
 import dev.crean.utils.FileHandler;
+import dev.crean.utils.Input;
+import dev.crean.utils.SampleInput;
 
 public class FindPassword {
-
-    private static final String DAY_ONE_INPUT = "aocResources/day-one-input.txt";
-    private static final String DAY_ONE_SAMPLE = "aocResources/day-one-sample.txt";
 
     static void main() {
         runSample();
@@ -15,7 +14,7 @@ public class FindPassword {
     private static void runMain() {
         System.out.println("Running main.");
 
-        run(DAY_ONE_INPUT);
+        run(Input.DAY_ONE);
 
         System.out.println("Expected password for part one: 997");
         System.out.println("Expected password for part two: 5978");
@@ -25,7 +24,7 @@ public class FindPassword {
     private static void runSample() {
         System.out.println("Running sample.");
 
-        run(DAY_ONE_SAMPLE);
+        run(SampleInput.DAY_ONE);
 
         System.out.println("Expected password for part one: 3");
         System.out.println("Expected password for part two: 6");
