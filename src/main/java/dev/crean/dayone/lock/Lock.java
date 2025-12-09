@@ -1,6 +1,6 @@
-package dev.crean.dayone;
+package dev.crean.dayone.lock;
 
-interface Lock {
+public interface Lock {
     void turn(LockTurn lock);
 
     int getPassword();

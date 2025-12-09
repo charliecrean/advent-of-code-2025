@@ -1,4 +1,4 @@
-package dev.crean.dayone;
+package dev.crean.dayone.lock;
 
 class ZeroLandingLock implements Lock {
     private int currentPointer = 50;

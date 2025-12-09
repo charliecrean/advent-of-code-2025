@@ -1,48 +1,22 @@
 package dev.crean.dayone;
 
+import dev.crean.dayone.lock.Lock;
+import dev.crean.dayone.lock.LockTurn;
 import dev.crean.utils.FileHandler;
-import dev.crean.utils.Input;
-import dev.crean.utils.SampleInput;
 
 public class FindPassword {
+    private final String path;
+    private final Lock lock;
 
-    static void main() {
-        runSample();
-        runMain();
+    public FindPassword(String path, Lock lock) {
+        this.path = path;
+        this.lock = lock;
     }
 
-    private static void runMain() {
-        System.out.println("Running main.");
-
-        run(Input.DAY_ONE);
-
-        System.out.println("Expected password for part one: 997");
-        System.out.println("Expected password for part two: 5978");
-        System.out.println();
-    }
-
-    private static void runSample() {
-        System.out.println("Running sample.");
-
-        run(SampleInput.DAY_ONE);
-
-        System.out.println("Expected password for part one: 3");
-        System.out.println("Expected password for part two: 6");
-        System.out.println();
-    }
-
-    private static void run(String path) {
-        Lock partOneLock = new ZeroLandingLock();
-        Lock partTwoLock = new ZeroCrossingLock();
-
+    public long find() {
         FileHandler<LockTurn> parser = new FileHandler<>(path);
-        parser.processFileLines(LockTurn::new,turn -> {
-            partOneLock.turn(turn);
-            partTwoLock.turn(turn);
-        });
-
-        System.out.println("Password for part one: " + partOneLock.getPassword());
-        System.out.println("Password for part two: " + partTwoLock.getPassword());
+        parser.processFileLines(LockTurn::new, lock::turn);
+        return lock.getPassword();
     }
 }
 
