@@ -1,16 +1,11 @@
-package dev.crean.daytwo;
+package dev.crean.daytwo.id;
 
 import java.util.HashSet;
 import java.util.Set;
 
 class IdCannotHaveAnyRepeatedSequence implements IdVerificationRule {
-    private static final IdVerificationRule INSTANCE = new IdCannotHaveAnyRepeatedSequence();
 
-    private IdCannotHaveAnyRepeatedSequence() {}
-
-    public static IdVerificationRule getInstance() {
-        return INSTANCE;
-    }
+    public IdCannotHaveAnyRepeatedSequence() {}
 
     @Override
     public boolean isValid(long id) {
