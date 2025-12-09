@@ -1,4 +1,4 @@
-package dev.crean.daysix;
+package dev.crean.daysix.calculators;
 
 import java.util.ArrayList;
 import java.util.List;
