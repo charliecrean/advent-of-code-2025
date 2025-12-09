@@ -1,4 +1,4 @@
-package dev.crean.daythree;
+package dev.crean.daythree.power;
 
 import java.util.List;
 

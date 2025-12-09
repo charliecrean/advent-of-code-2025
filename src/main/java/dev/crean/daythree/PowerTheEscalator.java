@@ -1,8 +1,8 @@
 package dev.crean.daythree;
 
+import dev.crean.daythree.power.BatteryBank;
+import dev.crean.daythree.power.JoltageCalculator;
 import dev.crean.utils.FileHandler;
-import dev.crean.utils.Input;
-import dev.crean.utils.SampleInput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,70 +10,30 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class PowerTheEscalator {
+    private final String path;
+    private final JoltageCalculator joltageCalculator;
 
-    static Logger log = Logger.getLogger(PowerTheEscalator.class.getName());
-
-    static void main() {
-        runSample();
-        runMain();
+    public PowerTheEscalator(String path, JoltageCalculator joltageCalculator) {
+        this.path = path;
+        this.joltageCalculator = joltageCalculator;
     }
 
-    private static void runMain() {
-        runMainPartOne();
-        runMainPartTwo();
-    }
-
-    private static void runMainPartOne() {
-        JoltageCalculator twoDigitCalculator = new MaxJoltageCalculator(2);
-        log.info("Result: " + run(Input.DAY_THREE, twoDigitCalculator));
-    }
-
-    private static void runMainPartTwo() {
-        JoltageCalculator twelveDigitCalculator = new MaxJoltageCalculator(12);
-        log.info("Result: " + run(Input.DAY_THREE, twelveDigitCalculator));
-    }
-
-    private static void runSample() {
-        runSamplePartOne();
-        runSamplePartTwo();
-    }
-
-    private static void runSamplePartOne() {
-        log.info("Running sample part one.");
-        JoltageCalculator twoDigitCalculator = new MaxJoltageCalculator(2);
-        checkResult(357, run(SampleInput.DAY_THREE, twoDigitCalculator));
-    }
-
-    private static void runSamplePartTwo() {
-        log.info("Running sample part two.");
-        JoltageCalculator twelveDigitCalculator = new MaxJoltageCalculator(12);
-        checkResult(3121910778619L, run(SampleInput.DAY_THREE, twelveDigitCalculator));
-    }
-
-    private static void checkResult(long expected, long actual) {
-        if (actual != expected) {
-            log.warning("Failure. Result " + actual + " does not match expected " + expected);
-            throw new IllegalStateException("Result " + actual + " does not match expected " + expected);
-        }
-        log.info("Success. Result: " + actual);
-    }
-
-    private static long run(String path, JoltageCalculator joltageCalculator) {
+    public long findJoltage() {
         return joltageCalculator.calculate(getInputs(path));
     }
 
-    private static List<BatteryBank> getInputs(String path) {
+    private List<BatteryBank> getInputs(String path) {
         FileHandler<BatteryBank> parser = new FileHandler<>(path);
         List<BatteryBank> inputs = new ArrayList<>();
-        parser.processFileLines(PowerTheEscalator::parseBatteryBank, inputs::add);
+        parser.processFileLines(this::parseBatteryBank, inputs::add);
         return inputs;
     }
 
-    private static BatteryBank parseBatteryBank(String input) {
+    private BatteryBank parseBatteryBank(String input) {
         return new BatteryBank(getIntegerValuesFromInput(input));
     }
 
-    private static List<Integer> getIntegerValuesFromInput(String input) {
+    private List<Integer> getIntegerValuesFromInput(String input) {
         return input.chars()
                 .map(Character::getNumericValue)
                 .boxed()
