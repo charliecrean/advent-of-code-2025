@@ -1,13 +1,12 @@
 package dev.crean.daytwo;
 
 import dev.crean.utils.FileHandler;
+import dev.crean.utils.Input;
+import dev.crean.utils.SampleInput;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 public class FindInvalidIds {
-
-    private static final String DAY_TWO_INPUT = "aocResources/day-two-input.txt";
-    private static final String DAY_TWO_SAMPLE = "aocResources/day-two-sample.txt";
 
     static void main() {
         runSample();
@@ -17,22 +16,22 @@ public class FindInvalidIds {
     private static void runMain() {
         System.out.println("Running main.");
         System.out.println("Part One result: ");
-        System.out.println(run(DAY_TWO_INPUT, IdCannotHaveRepeatedSequenceTwice.getInstance()));
+        System.out.println(run(Input.DAY_TWO, IdCannotHaveRepeatedSequenceTwice.getInstance()));
 
         System.out.println("Part Two result");
-        System.out.println(run(DAY_TWO_INPUT, IdCannotHaveAnyRepeatedSequence.getInstance()));
+        System.out.println(run(Input.DAY_TWO, IdCannotHaveAnyRepeatedSequence.getInstance()));
     }
 
     private static void runSample() {
         System.out.println("Running sample.");
         System.out.println("Part One");
         long partOneExpected = 1227775554L;
-        long partOneActual = run(DAY_TWO_SAMPLE, IdCannotHaveRepeatedSequenceTwice.getInstance());
+        long partOneActual = run(SampleInput.DAY_TWO, IdCannotHaveRepeatedSequenceTwice.getInstance());
         checkResult(partOneExpected, partOneActual);
 
         System.out.println("Part Two");
         long partTwoExpected = 4174379265L;
-        long partTwoActual = run(DAY_TWO_SAMPLE, IdCannotHaveAnyRepeatedSequence.getInstance());
+        long partTwoActual = run(SampleInput.DAY_TWO, IdCannotHaveAnyRepeatedSequence.getInstance());
         checkResult(partTwoExpected, partTwoActual);
     }
 

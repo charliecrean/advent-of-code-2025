@@ -1,20 +1,20 @@
 package dev.crean.dayfive;
 
+import dev.crean.utils.Input;
+import dev.crean.utils.SampleInput;
+
 import java.util.logging.Logger;
 
 public class CafeteriaInventoryManagement {
     static Logger log = Logger.getLogger(CafeteriaInventoryManagement.class.getName());
 
-    private static final String SAMPLE = "aocResources/day-five-sample.txt";
-    private static final String INPUT = "aocResources/day-five-input.txt";
-
-    static void main(String[] args) {
+    static void main() {
         runSample();
         runMain();
     }
 
     private static void runSample() {
-        InventoryDatabase sampleDatabase = new InventoryDatabase(SAMPLE);
+        InventoryDatabase sampleDatabase = new InventoryDatabase(SampleInput.DAY_FIVE);
         runSamplePartOne(sampleDatabase);
         runSamplePartTwo(sampleDatabase);
     }
@@ -38,7 +38,7 @@ public class CafeteriaInventoryManagement {
     }
 
     private static void runMain() {
-        InventoryDatabase database = new InventoryDatabase(INPUT);
+        InventoryDatabase database = new InventoryDatabase(Input.DAY_FIVE);
         runMainPartOne(database);
         runMainPartTwo(database);
     }
