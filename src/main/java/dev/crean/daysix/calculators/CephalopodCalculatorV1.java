@@ -11,7 +11,7 @@ class CephalopodCalculatorV1 implements CephalopodCalculator {
     public void addRow(String row) {
         String[] words = row.trim().split("\\s+");
         IntStream.range(0, words.length).forEach(columnIndex -> sums
-                .computeIfAbsent(columnIndex, _ -> new CephalopodSum())
+                .computeIfAbsent(columnIndex, index -> new CephalopodSum())
                 .addElement(words[columnIndex]));
     }
 

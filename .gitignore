@@ -40,3 +40,4 @@ build/
 
 ### Advent of Code
 /src/test/resources/aocResources/
+/.idea/
