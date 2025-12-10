@@ -33,14 +33,14 @@ public class BeamSplitterFactory {
                     if (columnIndex < row.size()) {
                         Node node = row.get(columnIndex);
                         switch (node) {
-                            case Dot _ -> row.set(columnIndex, new Beam());
+                            case Dot d -> row.set(columnIndex, new Beam());
                             case Split s -> {
                                 s.hit();
                                 fireBeam(i, columnIndex - 1, manifold);
                                 fireBeam(i, columnIndex + 1, manifold);
                                 return;
                             }
-                            case Beam _ -> {
+                            case Beam b -> {
                                 return;
                             }
                             default -> throw new IllegalStateException("Unexpected value: " + node);
