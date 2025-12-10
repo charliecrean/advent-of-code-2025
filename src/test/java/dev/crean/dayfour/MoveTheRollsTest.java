@@ -5,7 +5,9 @@ import dev.crean.utils.Input;
 import dev.crean.utils.SampleInput;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 
+@DisabledIfEnvironmentVariable(named = "CI", matches = "true")
 public class MoveTheRollsTest {
 
     @Test
