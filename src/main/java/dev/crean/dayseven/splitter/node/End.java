@@ -1,4 +1,4 @@
 package dev.crean.dayseven.splitter.node;
 
-public class End implements Node {
+public non-sealed class End implements Node {
 }

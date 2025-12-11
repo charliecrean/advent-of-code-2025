@@ -16,6 +16,9 @@ public class BeamSplitter {
 
     public void start() {
         Start root = manifold.getRoot();
+        if (root == null) {
+            throw new IllegalStateException("No Start node found in manifold");
+        }
         long numPaths = hit(root);
         root.setNumPathsToEnd(numPaths);
     }

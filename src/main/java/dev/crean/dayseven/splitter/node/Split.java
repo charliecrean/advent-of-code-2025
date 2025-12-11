@@ -1,6 +1,6 @@
 package dev.crean.dayseven.splitter.node;
 
-public class Split implements Node {
+public non-sealed class Split implements Node {
     private boolean isHit = false;
     private long numPathsToEnd = 0;
 
@@ -9,6 +9,9 @@ public class Split implements Node {
     }
 
     public void setNumPathsToEnd(long numPathsToEnd) {
+        if (numPathsToEnd < 0) {
+            throw new IllegalArgumentException("numPathsToEnd must be non-negative");
+        }
         this.numPathsToEnd = numPathsToEnd;
     }
 

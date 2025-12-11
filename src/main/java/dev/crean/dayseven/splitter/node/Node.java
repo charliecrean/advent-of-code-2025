@@ -1,5 +1,3 @@
 package dev.crean.dayseven.splitter.node;
 
-public interface Node {
-}
-
+public sealed interface Node permits Start, Split, End, Dot { }

@@ -25,6 +25,10 @@ public class TachyonManifold {
                 manifold::add
         );
 
+        if (manifold.isEmpty()) {
+            throw new IllegalArgumentException("Input file contains no valid lines");
+        }
+
         // Add a base row of end markers
         manifold.add(IntStream
                 .range(0, manifold.getLast().size())
@@ -35,7 +39,7 @@ public class TachyonManifold {
     }
 
     public List<List<Node>> getManifold() {
-        return manifold;
+        return Collections.unmodifiableList(manifold);
     }
 
     public Start getRoot() {
@@ -43,7 +47,7 @@ public class TachyonManifold {
     }
 
     public Set<Node> get(Node node) {
-        return nodeGraph.get(node);
+        return Collections.unmodifiableSet(nodeGraph.get(node));
     }
 
     private void buildGraph() {
