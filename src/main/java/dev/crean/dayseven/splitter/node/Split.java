@@ -1,6 +1,6 @@
 package dev.crean.dayseven.splitter.node;
 
-public non-sealed class Split implements Node {
+public final class Split implements Node {
     private boolean isHit = false;
     private long numPathsToEnd = 0;
 

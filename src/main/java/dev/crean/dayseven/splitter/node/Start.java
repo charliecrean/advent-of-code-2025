@@ -1,6 +1,6 @@
 package dev.crean.dayseven.splitter.node;
 
-public non-sealed class Start implements Node {
+public final class Start implements Node {
     private long numPathsToEnd;
 
     public long getNumPathsToEnd() {
