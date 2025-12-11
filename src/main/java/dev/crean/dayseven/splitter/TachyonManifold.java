@@ -20,8 +20,8 @@ public class TachyonManifold {
                             case '.' -> new Dot();
                             case 'S' -> new Start();
                             case '^' -> new Split();
-                            default -> null;
-                        }).filter(Objects::nonNull).toList()),
+                            default -> throw new IllegalArgumentException("Unexpected character in input: " + (char) c);
+                        }).toList()),
                 manifold::add
         );
 
