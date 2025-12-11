@@ -1,9 +1,13 @@
 package dev.crean.dayseven.splitter;
 
+import dev.crean.dayseven.splitter.node.End;
+import dev.crean.dayseven.splitter.node.Node;
+import dev.crean.dayseven.splitter.node.Split;
+import dev.crean.dayseven.splitter.node.Start;
+
 import java.util.*;
 
 public class BeamSplitter {
-
     private final TachyonManifold manifold;
 
     public BeamSplitter(TachyonManifold manifold) {
@@ -13,7 +17,7 @@ public class BeamSplitter {
     public void start() {
         Start root = manifold.getRoot();
         long numPaths = hit(root);
-        root.setNumPaths(numPaths);
+        root.setNumPathsToEnd(numPaths);
     }
 
     private long hit(Node current) {
@@ -27,9 +31,9 @@ public class BeamSplitter {
                     if (!split.isHit()) {
                         split.hit();
                         long numPaths = hit(nextNode);
-                        split.setNumPaths(numPaths);
+                        split.setNumPathsToEnd(numPaths);
                     }
-                    endsHit += split.getPaths();
+                    endsHit += split.getNumPathsToEnd();
                 }
             }
         }
@@ -37,14 +41,14 @@ public class BeamSplitter {
     }
 
     public long getNumberOfTimelines() {
-        return manifold.getRoot().getNumPaths();
+        return manifold.getRoot().getNumPathsToEnd();
     }
 
     public long getNumberOfBeamSplits() {
         return manifold.getManifold().stream()
                 .flatMap(List::stream)
                 .filter(node -> node instanceof Split)
-                .map(node -> (Split)node)
+                .map(node -> (Split) node)
                 .filter(Split::isHit)
                 .count();
     }
