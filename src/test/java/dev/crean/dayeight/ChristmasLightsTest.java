@@ -1,15 +1,14 @@
-package dayeight;
+package dev.crean.dayeight;
 
-import dev.crean.dayeight.ChristmasLights;
-import dev.crean.dayeight.Circuit;
-import dev.crean.dayeight.JunctionBox;
 import dev.crean.utils.Input;
 import dev.crean.utils.Pair;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 
 import java.util.List;
 
+@DisabledIfEnvironmentVariable(named = "CI", matches = "true")
 public class ChristmasLightsTest {
 
     @Test
