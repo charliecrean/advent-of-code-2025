@@ -10,4 +10,5 @@ public class Input extends BaseFileInput {
     public static final String DAY_FIVE = buildPath(DIR, FIVE);
     public static final String DAY_SIX = buildPath(DIR, SIX);
     public static final String DAY_SEVEN = buildPath(DIR, SEVEN);
+    public static final String DAY_EIGHT = buildPath(DIR, EIGHT);
 }

@@ -10,6 +10,7 @@ abstract class BaseFileInput {
     protected static final String FIVE = "five";
     protected static final String SIX = "six";
     protected static final String SEVEN = "seven";
+    protected static final String EIGHT = "eight";
 
     protected static String buildPath(String dir, String input) {
         return String.format(PATH, dir, input);
