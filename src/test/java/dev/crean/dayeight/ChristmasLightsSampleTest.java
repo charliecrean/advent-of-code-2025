@@ -16,7 +16,9 @@ public class ChristmasLightsSampleTest {
         ChristmasLights lights = new ChristmasLights(SampleInput.DAY_EIGHT);
         lights.buildCircuits(10);
         List<Circuit> largestCircuits = lights.getLargestCircuits(3);
-        long result = largestCircuits.stream().mapToInt(it -> it.getJunctionBoxes().size()).reduce(1, (a, b) -> a * b);
+        long result = largestCircuits.stream()
+                .mapToLong(it -> it.getJunctionBoxes().size())
+                .reduce(1L, (a, b) -> a * b);
         Assertions.assertEquals(40, result);
     }
 

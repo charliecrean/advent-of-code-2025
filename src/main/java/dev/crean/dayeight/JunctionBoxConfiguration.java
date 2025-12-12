@@ -16,7 +16,15 @@ class JunctionBoxConfiguration {
         FileHandler<String[]> fh = new FileHandler<>(inputFile);
         fh.processFileLines(
                 input -> input.split(","),
-                input -> junctionBoxes.add(new JunctionBox(Integer.parseInt(input[0]), Integer.parseInt(input[1]), Integer.parseInt(input[2])))
+                parts -> {
+                    if (parts.length != 3) {
+                        throw new IllegalArgumentException("Expected 3 comma-separated ints per line, got: " + Arrays.toString(parts));
+                    }
+                    int x = Integer.parseInt(parts[0].trim());
+                    int y = Integer.parseInt(parts[1].trim());
+                    int z = Integer.parseInt(parts[2].trim());
+                    junctionBoxes.add(new JunctionBox(x, y, z));
+                }
         );
     }
 

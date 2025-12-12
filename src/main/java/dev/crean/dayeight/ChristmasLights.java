@@ -31,11 +31,13 @@ public class ChristmasLights {
                     .toList();
 
             // Merge circuits if JunctionBoxes are in different circuits
-            if (circuits.size() != 1) {
-                circuits.getFirst().merge(circuits.getLast());
+            if (circuits.size() == 2) {
+                Circuit first = circuits.getFirst();
+                Circuit second = circuits.getLast();
+                first.merge(second);
 
                 // Capture the last two junction boxes connected to create a single circuit
-                if (this.circuits.remove(circuits.getLast()) && this.circuits.size() == 1) {
+                if (this.circuits.remove(second) && this.circuits.size() == 1) {
                     lastAddedToFormOneCircuit = new Pair<>(distance.first(), distance.second());
                 }
             }
